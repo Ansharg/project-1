@@ -28,7 +28,7 @@ export default function SignUp() {
         </div>
         <div className="md:w-[67%] lg:w-[40%] lg:ml-20">
           <form action="" className='flex flex-col space-y-4'>
-            <input type="name" id='name'  className="w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out" placeholder='Full Name' value={name} onChange={onChange}/>
+            <input type="name" id='name'  className="w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 border-[1px] rounded transition ease-in-out" placeholder='Full Name' value={name} onChange={onChange}/>
             <input type="email" id='email'  className="w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out" placeholder='Email Address' value={email} onChange={onChange}/>
             <div className='relative '>
             <input type={showPassword ? "text":"password"} id='password'  className="w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out" placeholder='Password' value={password} onChange={onChange}/>{showPassword ? (<AiFillEyeInvisible className='absolute right-3 top-3 text-xl cursor-pointer' onClick={()=>setShowPassword((prevState)=>!prevState)} />) : (<AiFillEye className='absolute right-3 top-3 text-xl cursor-pointer' onClick={()=>setShowPassword((prevState)=>!prevState)} />) }
