@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {AiFillEyeInvisible,AiFillEye} from 'react-icons/ai'
 import {Link} from 'react-router-dom'
+import OAuth from '../Components/OAuth';
 
 export default function SignIn() {
   const [showPassword,setShowPassword] = useState(false);
@@ -32,13 +33,14 @@ export default function SignIn() {
             </div>
             <div className='flex justify-between'>
               <p>Don't have an account ?<Link to='/sign-up' className='text-red-600 hover:text-red-700 transition duration-200 ease-in-out'>Register</Link> </p>
-              <p><Link to='/forgot-password' className='text-blue-600 hover:text-blue-800 transition duration-200 ease-in-out'>Forgot Password</Link></p>
+              <p><Link to='/forgot-password' className='text-blue-600 hover:text-blue-800 transition duration-200 ease-in-out'>Forgot Password?</Link></p>
             </div>
+            <button type="submit" className='w-full px-7 py-3 bg-blue-600 text-white text-sm uppercase hover:bg-blue-700 rounded shadow-md font-medium transition duration-150 ease-in-out hover:shadow-lg active:bg-blue-800'>Sign In</button>
+            <div className='flex before:border-t before:flex-1 my-4 before:border-gray-300 items-center  after:border-t after:flex-1 after:border-gray-300'>
+              <p className='text-center font-semibold mx-4'>OR</p>
+            </div>
+            <OAuth />
           </form>
-          <button type="submit" className='w-full px-7 py-3 bg-blue-600 text-white text-sm uppercase hover:bg-blue-700 rounded shadow-md font-medium transition duration-150 ease-in-out hover:shadow-lg active:bg-blue-800'>Sign In</button>
-          <div className='flex before:border-t before:flex-1 my-4 before:border-gray-300 items-center  after:border-t after:flex-1 after:border-gray-300'>
-            <p className='text-center font-semibold mx-4'>OR</p>
-          </div>
         </div>
       </div>
     </section>
