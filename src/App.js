@@ -6,6 +6,9 @@ import SignUp from "./Pages/SignUp"
 import ForgotPassword from "./Pages/ForgotPassword"
 import Profile from "./Pages/Profile"
 import Header from "./Components/Header"
+
+
+
 function App() {
   return (
     <>
