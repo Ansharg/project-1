@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
-import OAuth from '../Components/OAuth';
+import OAuth from '../Components/OAuth'
+import {toast} from 'react-toastify'
+import {getAuth, sendPasswordResetEmail} from 'firebase/auth'
 
 export default function ForgotPassword() {
   const [formData,setFormData] = useState({
@@ -14,6 +16,16 @@ export default function ForgotPassword() {
       [e.target.id]: e.target.value
     }));
   }
+  async function onSubmit(e) {
+    e.preventDefault();
+    try {
+      const auth = getAuth();
+      await sendPasswordResetEmail(auth,email);
+      toast.success("Email was sent");
+    } catch (error) {
+      toast.error("Couldn't send reset password");
+    }
+  }
   return (
     <>
     <section>
@@ -23,7 +35,7 @@ export default function ForgotPassword() {
           <img src="https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1673&q=80" alt="key" className="w-full rounded-2xl"/>
         </div>
         <div className="md:w-[67%] lg:w-[40%] lg:ml-20">
-          <form action="" className='flex flex-col space-y-4'>
+          <form action="" className='flex flex-col space-y-4' onSubmit={onSubmit}>
             <input type="email" id='email'  className="w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out" placeholder='Email Address' value={email} onChange={onChange}/>
             <div className='flex justify-between'>
               <p>Don't have an account ?<Link to='/sign-up' className='text-red-600 hover:text-red-700 transition duration-200 ease-in-out'>Register</Link> </p>
