@@ -1,6 +1,6 @@
 import React from 'react'
-import {Outlet,Navigate} from 'react-router-dom'
-import {useAuthStatus} from '../Hooks/useAuthStatus'
+import {Outlet,Navigate, useActionData} from 'react-router-dom'
+import { useAuthStatus } from '../Hooks/UseAuthStatus';
 
 export default function PrivateRoute() {
     const {loggedIn,checkingStatus} = useAuthStatus();
