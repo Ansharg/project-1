@@ -44,7 +44,7 @@ export default function Profile() {
           <input type="text" id='name' value={name} disabled={!changeDetails} onChange={onChange} className={`w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 transition ease-in-out rounded mb-6 ${changeDetails && "bg-red-200 focus:bg-red-200"}`} />
           <input type="email" id='email' value={email} disabled={!changeDetails} onChange={onChange} className='w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 transition ease-in-out rounded mb-6' />
           <div className='flex justify-between whitespace-nowrap text-sm sm:text-lg mb-6'>
-            <p className='flex items-center'>Do you want to change your name?<span className='text-red-600 hover:text-red-700 transition ease-in-out duration-200 ml-1 cursor-pointer' onClick={()=>setDetailsChange((prevState)=>!prevState)} onClick={()=>{changeDetails && onSubmit();setDetailsChange((prevState)=>!prevState)}} >{changeDetails ? "Apply change" : "Edit"}</span></p>
+            <p className='flex items-center'>Do you want to change your name?<span className='text-red-600 hover:text-red-700 transition ease-in-out duration-200 ml-1 cursor-pointer' onClick={()=>{changeDetails && onSubmit();setDetailsChange((prevState)=>!prevState)}} >{changeDetails ? "Apply change" : "Edit"}</span></p>
             <p className='text-blue-600 hover:text-blue-800 transition ease-in-out duration-200 cursor-pointer' onClick={onLogout}>Sign out</p>
           </div>
         </form>
