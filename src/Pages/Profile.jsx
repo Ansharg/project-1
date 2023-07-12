@@ -1,5 +1,5 @@
 import { getAuth, updateProfile } from 'firebase/auth'
-import { collection, doc, getDoc, getDocs, orderBy, query, updateDoc, where } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDoc, getDocs, orderBy, query, updateDoc, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify';
@@ -39,7 +39,7 @@ export default function Profile() {
       toast.error("Could not update the profile details");
     }
   }
-  React.useEffect(() => {
+  useEffect(() => {
     async function fetchUserListings() {
       const listingRef = collection(db, "listings");
       const q = query(
@@ -60,6 +60,22 @@ export default function Profile() {
     }
     fetchUserListings();
   }, [auth.currentUser.uid]);
+  async function onDelete(listingID)
+  {
+    if(window.confirm("Are you sure you want to delete ?"))
+    {
+      await deleteDoc(doc(db, "listing", listingID));
+      const updateListings = listings.filter(
+        (listing)=> listing.id !== listingID
+      )
+      setListings(updateListings);
+      toast.success("Successfully deleted the listing")
+    }
+  }
+  function onEdit(listingID)
+  {
+    navigate(`/edit-listing/${listingID}`)
+  }
   return (
     <>
     <section className='max-w-6xl mx-auto flex flex-col justify-center items-center'>
@@ -85,7 +101,9 @@ export default function Profile() {
               <ListingItem 
               key={listing.id}
               id={listing.id}
-              listing={listing.data}/>
+              listing={listing.data}
+              onDelete = {()=>{onDelete(listing.id)}}
+              onEdit = {()=>{onEdit(listing.id)}} />
             ))}
           </ul>
         </>
