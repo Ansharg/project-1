@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
 import {MdLocationOn} from 'react-icons/md'
 import {FaTrash} from 'react-icons/fa'
 import {MdEdit} from 'react-icons/md'
+import { doc, getDoc } from 'firebase/firestore'
+import {db} from '../Firebase'
 
 export default function ListingItem({listing, id, onDelete, onEdit}) {
   return (
